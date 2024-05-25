@@ -1,0 +1,320 @@
+
+
+
+/* styles.css */
+
+@import url(https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Quicksand:wght@300..700&display=swap);
+
+body, html {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding:  50px 15% 50px 15%;
+  background: #f4f4f4;
+  /*f4f4f4*/
+}
+  
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 60px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  text-align: center;
+}
+
+  
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: #204294;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 11%;
+  background-color: #204294;
+  color: #ffffff;
+  z-index: 100; /* Establece un z-index más bajo que el de los modales */
+  display: flex;
+  align-items: center;
+
+} 
+
+nav img{
+  width: 80px;
+  height: 70px;
+  max-width: 100px;
+  max-height: 120px;
+  position: relative;
+  margin: 1.5em 0 1em 3.5em;
+}
+
+/*se le modifico la tipografia*/
+h1{
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+}
+
+.container {
+  padding: 15px 0px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+  
+.left {
+  left: 0;
+}
+  
+.right {
+  left: 50%;
+}
+
+
+
+
+
+.content {
+  padding: 20px 30px;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra ligera para dar profundidad */
+  cursor: pointer; /* Cambia el cursor para indicar que es clickeable */
+  transition: .4s ease-in;
+
+}
+
+.content h2{ 
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
+  
+  /* Nuevos estilos para interacción */
+.content:hover {
+  transform: translateY(-3px); /* Mueve ligeramente el contenido hacia arriba */
+  box-shadow: 0 0 5px 1px #204294, 0 0 20px #204394ac;
+  
+}
+  
+.content::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -17px;
+  background-color: #ffffff;
+  border: 3px solid #204294;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+  
+.right .content::after {
+  left: -17px;
+}
+  
+  /*MODAL  */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 101;
+  left: 0;
+  top: 12%;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: transparent;
+
+}
+
+
+.modal-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%; /* Establece la altura deseada */
+  width: 100%; /* Establece el ancho deseado */
+  max-width: 700px; /* Opcional: Establece un ancho máximo */
+  max-height: 650px; /* Opcional: Establece una altura máxima */
+  margin: auto; /* Centra el modal en la pantalla */
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Agrega una sombra al modal */
+  overflow: auto; /* Permite el desplazamiento si el contenido es demasiado grande */
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes modalopen {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+/*  */
+.content {
+    opacity: 0; /* Inicia invisible */
+    transform: translateY(500px); /* Comienza fuera de vista hacia abajo */
+    transition: all 1s cubic-bezier(.99, -0.7, .2, 1.9); /* Transición suave para ambos */
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: translateY(100px) scale(0.5); /* Ajustamos la posición inicial */
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1.1); /* Ajustamos la posición intermedia */
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes bounceOut {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-20px) scale(1.1); /* Ajustamos la posición intermedia */
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100px) scale(0.5); /* Ajustamos la posición final */
+    }
+}
+
+._show {
+    opacity: 1;
+    animation: bounceIn 0.5s ease both;
+}
+
+._hide {
+    opacity: 0;
+    animation: bounceOut 0.5s ease both;
+}
+
+/*CARRUSEL*/
+.carousel {
+  position: relative;
+  max-width: 80%; /* Ajusta el ancho del carrusel según sea necesario */
+  overflow: hidden;
+  margin: auto; /* Centra el carrusel */
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  width: 100%;
+  background-color: white;
+  padding: 1em; /* Añade espacio alrededor del contenido */
+  box-sizing: border-box; /* Incluye padding en el tamaño total del elemento */
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  padding: 9px;
+  color: #204394;
+  z-index: 9999;
+  font-size: 25px;
+  width: 30px; /* Aumenta el ancho para mejor visualización */
+  border-radius: 50%;
+  text-align: center;
+}
+
+.prev:hover,
+.next:hover {
+  font-size: 26px;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+.rango-cards {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+
+.rango-cards h4 {
+  font-weight: 400;
+  font-size: 17px;
+  margin-bottom: 0.5rem;
+}
+
+.rango-cards h2 {
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 1rem;
+}
+
+.carousel-item p {
+  margin: 1em 3em;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  text-align: justify;
+}
+
+.img-card {
+  text-align: center;
+  margin-top: 2em;
+}
+
+.img-card img {
+  max-width: 80%; /* Ajusta la imagen al ancho del contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */
+  max-height: 400px; /* Limita la altura máxima de la imagen */
+}
+
+.video-card {
+  text-align: center;
+}
+
+.description-card {
+  margin-top: 2em; /* Ajusta el margen según sea necesario */
+}
