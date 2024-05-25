@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Línea del Tiempo AMIAC</title>
+    <link rel="stylesheet" href="timeline.css">
+    <link rel="stylesheet" href="footer.css">
+    
+</head>
+<body>
+
+    <nav>
+        <a href="">
+            <img src="images/LogoAMIAC.png" alt="logo amiac">
+        </a>
+
+        <h1 class="titulo">
+            LINEA DEL TIEMPO AMIAC
+        </h1>
+    </nav>
+
+    <section class="timeline"></section>
+
+    <!-- Modal -->
+    <section id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="carousel">
+                <div class="carousel-inner"></div>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="pruebatimeline.js" defer></script>
+</body>
+</html>
